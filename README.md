@@ -1,14 +1,5 @@
 # Drowsiness and Distraction Detector. 
 It is a real time driver monitoring system that uses facial landmark detection to identify signs of drowsiness, yawning and distraction(head tilt). It avoids accidents on road as it triggers visual alerts.
-# Concepts that are used.
-Facial landmark detection used in MediaPipe FaceMesh
-Eye Aspect Ratio(EAR) used in Drowsiness detection
-Mouth Aspect Ratio used in Yawn Detection
-Head pose estimation used in distraction detection
-Contour and region of interest used in eye or mouth landmark indexing
-Real time video processing used in Frame by frame inference loop
-Image annotation used in OpenCV drawing 
-Thresholding used in EAR<0.22 alert
 # Setup 
 Pre requisites- Python 3.8 or higher, pip, a webcam
 Clone the repository
