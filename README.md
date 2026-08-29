@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-0097A7?style=flat-square&logo=google&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
 # Drowsiness and Distraction Detector. 
 It is a real time driver monitoring system that uses facial landmark detection to identify signs of drowsiness, yawning and distraction(head tilt). It avoids accidents on road as it triggers visual alerts.
 
