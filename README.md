@@ -29,6 +29,37 @@ Drowsiness / Yawn / Distraction
         ↓
 Visual Alert
 
+# Technical Approach
+
+## Technical Approach
+
+The system uses facial landmark geometry and temporal analysis to identify visual indicators of driver fatigue and distraction.
+1. Face Landmark Detection
+MediaPipe Face Mesh is used to detect facial landmarks from each webcam frame. These landmarks provide the coordinates required to analyze the eyes, mouth, and head orientation in real time.
+2. Eye Aspect Ratio (EAR)
+The Eye Aspect Ratio is calculated from key eye landmarks to estimate the degree of eye closure.
+
+* **EAR < 0.22** indicates a potentially closed eye.
+* The condition must persist for **20+ consecutive frames** before triggering a drowsiness alert, reducing false positives caused by normal blinking.
+3. Mouth Aspect Ratio (MAR)
+The Mouth Aspect Ratio is calculated using mouth landmarks to detect prolonged mouth opening.
+
+* **MAR > 0.6** is used as the threshold for potential yawning.
+* This provides an additional fatigue indicator alongside eye closure.
+
+4. Head-Tilt Detection
+Facial landmark geometry is used to estimate head orientation.
+
+* A head tilt exceeding **25°** is treated as a potential distraction indicator.
+* This helps detect cases where the driver's attention may be directed away from the road.
+
+5. Temporal Filtering & Decision Logic
+Individual frames are not evaluated in isolation. Eye-closure and other signals are tracked across consecutive frames to distinguish sustained fatigue indicators from short-lived movements.
+The final alert logic combines:
+
+**Eye Closure + Yawning + Head Tilt → Drowsiness / Distraction Alert**
+6. Real-Time Processing
+The complete pipeline runs continuously on webcam frames using OpenCV and MediaPipe, with lightweight landmark-based calculations designed for CPU-based real-time processing.
 
  
  # How it works
