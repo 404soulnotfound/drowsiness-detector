@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 # Drowsiness and Distraction Detector. 
-It is a real time driver monitoring system that uses facial landmark detection to identify signs of drowsiness, yawning and distraction(head tilt). It avoids accidents on road as it triggers visual alerts.
+It is a real time driver monitoring system that uses facial landmark detection to identify signs of drowsiness, yawning and distraction(head tilt). The system detects potential fatigue and distraction indicators and provides visual alerts to support driver awareness.
 
 # Setup 
 Pre requisites- Python 3.8 or higher, pip, a webcam
@@ -13,6 +13,24 @@ Clone the repository
 Create a virtual environment
 Install dependencies
 
+ # Workflow
+    Webcam
+   ↓
+MediaPipe Face Landmarks
+   ↓
+┌──────────────┬──────────────┬──────────────┐
+│ Eye Landmarks│ Mouth Points │ Head Geometry│
+│     EAR      │     MAR      │  Tilt Angle  │
+└──────────────┴──────────────┴──────────────┘
+        ↓
+Temporal Filtering
+        ↓
+Drowsiness / Yawn / Distraction
+        ↓
+Visual Alert
+
+
+ 
  # How it works
  When the eye is open EAR approx 0.30+. When it closes EAR drops to 0. So if EAR stays below 0.22 for 20+ frames consecutively a drowsiness alert is triggered.
  if MAR exceeds 0.6 yawn is detected
@@ -33,6 +51,12 @@ Built with MediaPipe (no external model files needed) instead of dlib
 
  # Libraries used
  OpenCV MediaPipe NumPy
+
+ # Limitations
+ Thresholds are currently empirically selected rather than learned from a labeled dataset.
+ Performance can vary with lighting, camera angle and partial face occlusion.
+ Current system focuses on facial cues rather than physiological signals.
+
  
  # How to stop 
  press Q on the video window
